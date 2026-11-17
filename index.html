@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Café da Milla | Cardápio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topo">
+  <div class="topo-conteudo">
+    <img src="WhatsApp Image 2026-11-17 at 16.13.50.jpeg" alt="">
+    <div class="marca">
+      <span class="sobretitulo">CARDÁPIO DIGITAL</span>
+      <h1>Café da <span>Milla</span></h1>
+      <p>Comida gostosa, leve e feita com carinho.</p>
+    </div>
+
+    <button class="admin-atalho" id="abrirAdmin">⚙</button>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="boas-vindas">
+    <span class="ponto"></span>
+    <div>
+      <h2>Nosso cardápio</h2>
+      <p>Escolha suas delícias favoritas!</p>
+    </div>
+    <span class="selo">FEITO COM CARINHO</span>
+  </section>
+
+  <nav class="atalhos" id="atalhosCategorias"></nav>
+
+  <section id="cardapio" class="cardapio"></section>
+
+  <section class="aviso">
+    <span class="aviso-icone">✦</span>
+    <p><strong>Faça seu pedido!</strong> Consulte a disponibilidade dos produtos. Alguns itens são preparados sob encomenda.</p>
+  </section>
+
+  <section class="entrega-area">
+    <div>
+      <span class="mini-titulo">RECEBA EM CASA</span>
+      <h2>Vai querer entrega?</h2>
+      <p>Toque no botão para informar seus dados e escolher o horário.</p>
+    </div>
+    <button class="botao-entrega" id="mostrarEntrega">🚚 Entrega</button>
+  </section>
+
+  <form id="formEntrega" class="form-entrega escondido">
+
+    <div class="form-cabecalho">
+      <div>
+        <span class="mini-titulo">SEU PEDIDO</span>
+        <h2>Dados para entrega</h2>
+      </div>
+      <button type="button" class="fechar" id="fecharEntrega">×</button>
+    </div>
+
+    <label for="nomeCliente">Nome do cliente</label>
+    <input id="nomeCliente" type="text" placeholder="Digite seu nome" required>
+
+    <label for="telefoneCliente">Telefone para contato</label>
+    <input id="telefoneCliente" type="tel" placeholder="(00) 00000-0000" required>
+
+    <label for="enderecoCliente">Endereço completo</label>
+    <textarea id="enderecoCliente" rows="3" placeholder="Rua, número, bairro e referência" required></textarea>
+
+    <label for="horarioEntrega">Horário desejado</label>
+    <input id="horarioEntrega" type="time" required>
+
+    <p class="horarios-info">
+      Entregas: 11h às 12h20 e 14h às 17h.
+    </p>
+
+    <p id="mensagemHorario" class="mensagem-erro"></p>
+
+    <button class="botao-enviar" type="submit">
+      Enviar pedido pelo WhatsApp
+    </button>
+
+  </form>
+
+</main>
+
+<footer>
+  <strong>Café da Milla</strong>
+  <span>Um carinho em cada detalhe ☕</span>
+</footer>
+
+<!-- CABINE DE COMANDOS -->
+
+<div class="modal escondido" id="modalAdmin">
+
+  <div class="painel">
+
+    <button class="fechar fechar-modal" id="fecharAdmin">×</button>
+
+    <div id="telaLogin">
+
+      <span class="mini-titulo">ACESSO RESTRITO</span>
+
+      <h2>Cabine de comandos</h2>
+
+      <p class="texto-suave">
+        Área exclusiva da proprietária do Café da Milla.
+      </p>
+
+      <label for="senhaAdmin">Senha de acesso</label>
+
+      <input id="senhaAdmin" type="password" placeholder="Digite a senha">
+
+      <p id="erroSenha" class="mensagem-erro"></p>
+
+      <button class="botao-enviar" id="entrarAdmin">
+        Entrar
+      </button>
+
+    </div>
+
+    <div id="conteudoAdmin" class="escondido">
+
+      <span class="mini-titulo">GERENCIAMENTO</span>
+
+      <h2>Editar cardápio</h2>
+
+      <p class="texto-suave">
+        Adicione produtos, altere nomes e preços ou remova itens.
+      </p>
+
+      <form id="formProduto" class="form-produto">
+
+        <input type="hidden" id="produtoId">
+
+        <label for="nomeProduto">Nome do produto</label>
+        <input id="nomeProduto" required placeholder="Ex.: Bolo de cenoura">
+
+        <label for="categoriaProduto">Categoria</label>
+
+        <select id="categoriaProduto">
+          <option value="Salgados fitness">Salgados fitness</option>
+          <option value="Bolos funcionais">Bolos funcionais</option>
+          <option value="Sobremesas saudáveis">Sobremesas saudáveis</option>
+          <option value="Congelados">Congelados</option>
+        </select>
+
+        <label for="precoProduto">Preço (R$)</label>
+        <input id="precoProduto" type="number" min="0" step="0.01" placeholder="Ex.: 15,00">
+
+        <button class="botao-enviar" type="submit" id="salvarProduto">
+          Adicionar produto
+        </button>
+
+        <button class="botao-secundario escondido" type="button" id="cancelarEdicao">
+          Cancelar edição
+        </button>
+
+      </form>
+
+      <h3 class="titulo-lista">Produtos cadastrados</h3>
+
+      <div id="listaAdmin" class="lista-admin"></div>
+
+      <button class="sair" id="sairAdmin">
+        Sair da cabine
+      </button>
+
+    </div>
+
+  </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
